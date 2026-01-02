@@ -21,6 +21,7 @@
 #define FOREGROUND_COLOR 0xFF2020FF
 static uint32_t pixels[WIDTH * HEIGHT];
 
+#define PICS "pics/"
 
 bool checker_example(void)
 {
@@ -43,7 +44,7 @@ bool checker_example(void)
     }
 
      
-    const char *filepath = "checker.png";
+    const char *filepath = PICS"checker.png";
     if (!stbi_write_png(filepath, WIDTH, HEIGHT, 4, pixels, WIDTH*sizeof(uint32_t))) {
 	fprintf(stderr, "Couldn't save file %s: %s\n", filepath, strerror(errno));
 	return false;
@@ -58,7 +59,7 @@ bool circle_example(void)
     olivec_fill_circle(pixels, WIDTH, HEIGHT, WIDTH*2/3, HEIGHT/2, 200, 0xFF1E9EF7);
     olivec_fill_circle(pixels, WIDTH, HEIGHT, WIDTH/3, HEIGHT/2, 200, 0xAA0000FF);
 
-    const char *filepath = "circle.png";
+    const char *filepath = PICS"circle.png";
     if (!stbi_write_png(filepath, WIDTH, HEIGHT, 4, pixels, WIDTH*sizeof(uint32_t))) {
 	fprintf(stderr, "Couldn't save file %s: %s\n", filepath, strerror(errno));
 	return false;
@@ -83,7 +84,7 @@ bool lines_example(void)
 		     0, HEIGHT/2, WIDTH, 0,
 		     0xFF20FF20);
 
-    const char *filepath = "line.png";
+    const char *filepath = PICS"line.png";
     if (!stbi_write_png(filepath, WIDTH, HEIGHT, 4, pixels, WIDTH*sizeof(uint32_t))) {
 	fprintf(stderr, "Couldn't save file %s: %s\n", filepath, strerror(errno));
 	return false;
@@ -112,7 +113,7 @@ bool triangle_example(void)
 			 WIDTH*5/8, HEIGHT*5/8,
 			 0xFFFF2020);
 
-    const char *filepath = "triangles.png";
+    const char *filepath = PICS"triangles.png";
     if (!stbi_write_png(filepath, WIDTH, HEIGHT, 4, pixels, WIDTH*sizeof(uint32_t))) {
 	fprintf(stderr, "Couldn't save file %s: %s\n", filepath, strerror(errno));
 	return false;
