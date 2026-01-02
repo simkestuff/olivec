@@ -17,7 +17,7 @@ function make_environment(...envs) {
     });
 }
 
-WebAssembly.instantiateStreaming(fetch('app.wasm'), {
+WebAssembly.instantiateStreaming(fetch('3d.wasm'), {
     "env": make_environment({
         "atan2f": Math.atan2,
         "cosf": Math.cos,
