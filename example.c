@@ -4,7 +4,10 @@
 #include <stdbool.h>
 
 #include "olive.c"
-#include "utils.c"
+//#include "utils.c" // zamjenjeno sa stb library-em
+
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include "stb_image_write.h"
 
 #define WIDTH 800
 #define HEIGHT 600
@@ -38,10 +41,10 @@ bool checker_example(void)
 			     color);
 	}
     }
-    
-    const char *filepath = "checker.ppm";
-    Errno err = utils_save_to_ppm(pixels, WIDTH, HEIGHT, filepath);
-    if (err) {
+
+     
+    const char *filepath = "checker.png";
+    if (!stbi_write_png(filepath, WIDTH, HEIGHT, 4, pixels, WIDTH*sizeof(uint32_t))) {
 	fprintf(stderr, "Couldn't save file %s: %s\n", filepath, strerror(errno));
 	return false;
     }
@@ -55,9 +58,8 @@ bool circle_example(void)
     olivec_fill_circle(pixels, WIDTH, HEIGHT, WIDTH*2/3, HEIGHT/2, 200, 0xFF1E9EF7);
     olivec_fill_circle(pixels, WIDTH, HEIGHT, WIDTH/3, HEIGHT/2, 200, 0xAA0000FF);
 
-    const char *filepath = "circle.ppm";
-    Errno err = utils_save_to_ppm(pixels, WIDTH, HEIGHT, filepath);
-    if (err) {
+    const char *filepath = "circle.png";
+    if (!stbi_write_png(filepath, WIDTH, HEIGHT, 4, pixels, WIDTH*sizeof(uint32_t))) {
 	fprintf(stderr, "Couldn't save file %s: %s\n", filepath, strerror(errno));
 	return false;
     }
@@ -81,9 +83,8 @@ bool lines_example(void)
 		     0, HEIGHT/2, WIDTH, 0,
 		     0xFF20FF20);
 
-    const char *filepath = "line.ppm";
-    Errno err = utils_save_to_ppm(pixels, WIDTH, HEIGHT, filepath);
-    if (err) {
+    const char *filepath = "line.png";
+    if (!stbi_write_png(filepath, WIDTH, HEIGHT, 4, pixels, WIDTH*sizeof(uint32_t))) {
 	fprintf(stderr, "Couldn't save file %s: %s\n", filepath, strerror(errno));
 	return false;
     }
@@ -111,9 +112,8 @@ bool triangle_example(void)
 			 WIDTH*5/8, HEIGHT*5/8,
 			 0xFFFF2020);
 
-    const char *filepath = "triangles.ppm";
-    Errno err = utils_save_to_ppm(pixels, WIDTH, HEIGHT, filepath);
-    if (err) {
+    const char *filepath = "triangles.png";
+    if (!stbi_write_png(filepath, WIDTH, HEIGHT, 4, pixels, WIDTH*sizeof(uint32_t))) {
 	fprintf(stderr, "Couldn't save file %s: %s\n", filepath, strerror(errno));
 	return false;
     }
