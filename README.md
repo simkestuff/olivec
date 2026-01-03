@@ -11,7 +11,7 @@ learining by watching somebody doing it...
 
 Example of using projection formula 
 
-```
+```math
 $$
 x'=\frac{x}{z}
 y'=\frac{y}{z}
