@@ -5,13 +5,14 @@ LDFLAGS = -Llib -lraylib -lm
 
 BIN = bin
 
-.PHONY: clean app ray wasm 3d all
+.PHONY: clean app ray wasm 3d all cube
 
-all: $(BIN)/app $(BIN)/ray $(BIN)/app.wasm $(BIN)/3d.wasm
+all: $(BIN)/app $(BIN)/ray $(BIN)/app.wasm $(BIN)/3d.wasm $(BIN)/cube
 app: $(BIN)/app
 ray: $(BIN)/ray
 wasm: $(BIN)/app.wasm
 3d: $(BIN)/3d.wasm
+cube: $(BIN)/cube
 
 $(BIN):
 	mkdir -p $(BIN)
@@ -27,6 +28,9 @@ $(BIN)/3d.wasm: 3d.c | $(BIN)
 	clang-17 $(CFLAGS) --target=wasm32 -nostdlib -Wl,--no-entry -Wl,--export=render -Wl,--export-memory -Wl,--allow-undefined -o $@ $^
 
 $(BIN)/ray: ray.c | $(BIN)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $< $(LDFLAGS) -o $@
+
+$(BIN)/cube: cube.c | $(BIN)
 	$(CC) $(CFLAGS) $(CPPFLAGS) $< $(LDFLAGS) -o $@
 
 clean:
