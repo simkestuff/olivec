@@ -9,18 +9,9 @@ learining by watching somebody doing it...
 
 ### cube.c
 
-Example of using projection formula 
+Example of using projection formula $x'=\frac{x}{z}$ and $y'=\frac{y}{z}$.
 
-```math
-$$
-x'=\frac{x}{z}     
-
-y'=\frac{y}{z}
-
-$$
-```
-
-following this [video](https://youtu.be/qjWkNZ0SXfo?si=io9W39_F1vkXytOf)
+Following this [video](https://youtu.be/qjWkNZ0SXfo?si=io9W39_F1vkXytOf)
 
 
 
