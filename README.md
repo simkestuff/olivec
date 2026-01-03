@@ -11,6 +11,12 @@ learining by watching somebody doing it...
 
 This is library used for CPU rendering.  
 
+### Examples
+
+File example.c contains examples of olive.c usage.  
+As result, some png files are produces and placed in pics directory. For creation of files [stb single header file libraries](https://github.com/nothings/stb) are used.
+
+
 ### raylib examples
 
 olive.c library is not dependent on any external graphics library.  
